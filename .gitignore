@@ -1,0 +1,10 @@
+./idea
+
+*/node_modules
+*/node-modules
+
+/node-modules
+/node_modules
+
+/fetchjson/node_modules/
+/.idea/
