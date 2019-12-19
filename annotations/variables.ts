@@ -52,7 +52,7 @@ for (let i = 0, len = words.length; i < len; i++) {
 let numbers = [-10, -1, 12];
 let numberAboveZero: boolean | number = false;
 
-for (let i = 0, len = numbers.length; i <len; i++) {
+for (let i = 0, len = numbers.length; i <len; i ++) {
   let n = numbers[i];
   if (n > 0) {
     numberAboveZero = n;
