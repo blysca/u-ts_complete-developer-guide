@@ -9,3 +9,5 @@
 /fetchjson/node_modules/
 /.idea/
 
+/maps/.cache/
+/maps/dist/
