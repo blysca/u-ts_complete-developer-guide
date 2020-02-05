@@ -2,8 +2,8 @@ import {User} from './models/User';
 
 const user = new User({name: 'new record', age: 0});
 
-user.events.on('change', ()=>{
-  console.log('-- onChange  ');
-});
+// A quick reminder on accessors
 
-user.events.trigger('change');
+user.on('change', ()=>{
+  console.log('user was changed!')
+});
