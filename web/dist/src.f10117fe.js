@@ -128,27 +128,24 @@ var UserForm =
 /** @class */
 function () {
   function UserForm(parent, model) {
+    var _this = this;
+
     this.parent = parent;
     this.model = model;
+
+    this.onSetAgeClick = function () {
+      _this.model.setRandomAge();
+    };
   }
 
   UserForm.prototype.eventsMap = function () {
     return {
-      'click:button': this.onButtonClick,
-      'mouseenter:h1': this.onHeaderHover
+      'click:.set-age': this.onSetAgeClick
     };
   };
 
-  UserForm.prototype.onButtonClick = function () {
-    console.log('-- hello');
-  };
-
-  UserForm.prototype.onHeaderHover = function () {
-    console.log('-- h1 was hovered');
-  };
-
   UserForm.prototype.template = function () {
-    return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: " + this.model.get('name') + "</div>\n        <div>User age: " + this.model.get('age') + "</div>\n        <input type=\"text\" placeholder=\"Enter your value\" />\n        <button>Click me!)</button>\n      </div>\n    ";
+    return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: " + this.model.get('name') + "</div>\n        <div>User age: " + this.model.get('age') + "</div>\n        <input type=\"text\" placeholder=\"Enter your value\" />\n        <button>Click me!)</button>\n        <button class=\"set-age\">Set Random Age</button>\n      </div>\n    ";
   };
 
   UserForm.prototype.bindEvents = function (fragment) {
@@ -2242,6 +2239,13 @@ function (_super) {
   User.buildUserCollection = function () {
     return new Collection_1.Collection(rootUrl, function (json) {
       return User.buildUser(json);
+    });
+  };
+
+  User.prototype.setRandomAge = function () {
+    var age = Math.round(Math.random() * 100);
+    this.set({
+      age: age
     });
   };
 

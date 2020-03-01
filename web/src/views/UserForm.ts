@@ -7,17 +7,13 @@ export class UserForm {
 
   eventsMap(): { [key: string]: () => void } {
     return {
-      'click:button': this.onButtonClick,
-      'mouseenter:h1': this.onHeaderHover
+      'click:.set-age': this.onSetAgeClick,
     };
   }
 
-  onButtonClick(): void {
-    console.log('-- hello');
-  }
-  onHeaderHover(): void {
-    console.log('-- h1 was hovered');
-  }
+  onSetAgeClick = (): void => {
+    this.model.setRandomAge();
+  };
 
   template(): string {
     return `
@@ -27,14 +23,15 @@ export class UserForm {
         <div>User age: ${this.model.get('age')}</div>
         <input type="text" placeholder="Enter your value" />
         <button>Click me!)</button>
+        <button class="set-age">Set Random Age</button>
       </div>
     `;
   }
 
   bindEvents(fragment: DocumentFragment): void {
-    const  eventsMap = this.eventsMap();
+    const eventsMap = this.eventsMap();
 
-    for(let eventKey in eventsMap){
+    for (let eventKey in eventsMap) {
       const [eventName, selector] = eventKey.split(':');
 
       fragment.querySelectorAll(selector).forEach(element => {
