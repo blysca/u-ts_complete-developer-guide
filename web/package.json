@@ -1,8 +1,7 @@
 {
   "scripts": {
     "start:parcel": "parcel index.html",
-    "start:db": "json-server -w db.json",
-    "start": "json-server -w db.json"
+    "start:db": "json-server -w db.json"
   },
   "devDependencies": {
     "typescript": "^3.7.5"

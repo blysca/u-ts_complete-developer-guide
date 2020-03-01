@@ -1,9 +1,11 @@
 import {User} from './models/User';
 
-const user = new User({name: 'new record', age: 0});
+const user = new User({id: 1, name: 'new name 2', age: 2});
 
 // A quick reminder on accessors
 
-user.on('change', ()=>{
-  console.log('user was changed!')
+user.on('save', () => {
+  console.log(user)
 });
+
+user.save();
