@@ -137,6 +137,16 @@ function () {
       _this.model.setRandomAge();
     };
 
+    this.onSetNameClick = function () {
+      var input = _this.parent.querySelector('input');
+
+      var name = input.value;
+
+      _this.model.set({
+        name: name
+      });
+    };
+
     this.bindModel();
   }
 
@@ -150,12 +160,13 @@ function () {
 
   UserForm.prototype.eventsMap = function () {
     return {
-      'click:.set-age': this.onSetAgeClick
+      'click:.set-age': this.onSetAgeClick,
+      'click:.set-name': this.onSetNameClick
     };
   };
 
   UserForm.prototype.template = function () {
-    return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: " + this.model.get('name') + "</div>\n        <div>User age: " + this.model.get('age') + "</div>\n        <input type=\"text\" placeholder=\"Enter your value\" />\n        <button>Click me!)</button>\n        <button class=\"set-age\">Set Random Age</button>\n      </div>\n    ";
+    return "\n      <div>\n        <h1>User Form</h1>\n        <div>User name: " + this.model.get('name') + "</div>\n        <div>User age: " + this.model.get('age') + "</div>\n        <input type=\"text\" placeholder=\"Enter your value\" />\n        <button class=\"set-name\">Change Name</button>\n        <button class=\"set-age\">Set Random Age</button>\n      </div>\n    ";
   };
 
   UserForm.prototype.bindEvents = function (fragment) {
