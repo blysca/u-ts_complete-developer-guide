@@ -140,11 +140,13 @@ function () {
     this.onSetNameClick = function () {
       var input = _this.parent.querySelector('input');
 
-      var name = input.value;
+      if (input) {
+        var name = input.value;
 
-      _this.model.set({
-        name: name
-      });
+        _this.model.set({
+          name: name
+        });
+      }
     };
 
     this.bindModel();
@@ -2290,8 +2292,14 @@ var user = User_1.User.buildUser({
   name: 'john wick',
   age: 35
 });
-var userForm = new UserForm_1.UserForm(document.getElementById('root'), user);
-userForm.render();
+var root = document.getElementById('root');
+
+if (root) {
+  var userForm = new UserForm_1.UserForm(root, user);
+  userForm.render();
+} else {
+  throw Error('Root element not found.');
+}
 },{"./views/UserForm":"src/views/UserForm.ts","./models/User":"src/models/User.ts"}],"../../../../Users/blysca/AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
