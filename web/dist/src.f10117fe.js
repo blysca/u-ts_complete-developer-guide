@@ -131,6 +131,16 @@ function () {
     this.parent = parent;
   }
 
+  UserForm.prototype.eventMap = function () {
+    return {
+      'button:click': this.onButtonClick
+    };
+  };
+
+  UserForm.prototype.onButtonClick = function () {
+    console.log('-- hello');
+  };
+
   UserForm.prototype.template = function () {
     return "\n      <div>\n        <h1>User Form</h1>\n        <input type=\"text\" placeholder=\"Enter your value\" />\n      </div>\n    ";
   };
