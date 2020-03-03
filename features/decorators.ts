@@ -1,4 +1,5 @@
 class Boat {
+  @testDecorator
   color = 'blue';
 
   get formattedColor(): string {
@@ -10,6 +11,11 @@ class Boat {
     throw new Error();
     console.log('swim');
   }
+}
+
+function testDecorator(target: any, key: string) {
+  console.log('target: = ', target);
+  console.log('key: = ', key);
 }
 
 function logError(errorMessage: string) {
