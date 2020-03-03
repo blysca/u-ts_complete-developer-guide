@@ -1,20 +1,36 @@
+@classDecorator
 class Boat {
   @testDecorator
   color = 'blue';
 
+  @testDecorator
   get formattedColor(): string {
     return `This boats color is ${this.color}`;
   }
 
   @logError('Ooops, boat was...')
-  pilot():void {
-    throw new Error();
-    console.log('swim');
+  pilot(
+    @parametrDecorator speed: string,
+    @parametrDecorator generateWake:boolean
+  ):void {
+    if (speed === 'fast') {
+      console.log('swim');
+    } else {
+      console.log('nothing');
+    }
   }
 }
 
+function classDecorator(constructor: Function) {
+  console.log('constructor: = ', constructor);
+
+}
+
+function parametrDecorator(target: any, key: string, index: number) {
+  console.log(key, index);
+}
+
 function testDecorator(target: any, key: string) {
-  console.log('target: = ', target);
   console.log('key: = ', key);
 }
 
@@ -32,4 +48,4 @@ function logError(errorMessage: string) {
   }
 }
 
-new Boat().pilot();
+// new Boat().pilot();
